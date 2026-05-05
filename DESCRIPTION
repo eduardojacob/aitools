@@ -1,18 +1,26 @@
 Package: aitools
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
+Title: Access AI models
+Version: 2026.05.05
 Authors@R: c(
-    person(
-      "Jane", "Doe",
-      email = "jane@example.com",
-      role = c("aut", "cre")
-    )
+    person("Eduardo", "Jacob", , "eduardo.jorge.jacob@hotmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0009-2103-852X"))
   )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
-License: What license is it under?
-Encoding: UTF-8
-LazyData: true
+Description: My collection of tools for accessing AI models.
+License: MIT + file LICENSE
+Depends: 
+    R (>= 4.1.2)
+Imports:
+    base64enc,
+    ellmer,
+    gemini.R,
+    htmltools,
+    httr2,
+    markdown,
+    rstudioapi,
+    shinychat
 URL: https://github.com/EduardoJacob/aitools
+Encoding: UTF-8
 BugReports: https://github.com/EduardoJacob/aitools/issues
+RoxygenNote: 7.3.3
+
