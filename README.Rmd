@@ -39,18 +39,19 @@ pak::pak("EduardoJacob/aitools")
 
 ### Defined Functions
 
-**gemini(prompt)**
-This function submits a text prompt to Google's Gemini 2.5-flash model via the `gemini.R` package. It requires a `GEMINI_API_KEY` environment variable, tracks the execution time, and automatically converts the Markdown response into an HTML file (gemini.html) which is then displayed in the RStudio viewer.
 
-**lmstudio(prompt)**
-This function interfaces with a local LLM running via LM Studio at the default local host address. It uses the `ellmer` package for communication; if the prompt argument is omitted, it launches an interactive Shiny chat application, otherwise, it processes the text prompt and renders the result in the RStudio viewer.
+### `gemini(prompt, model="2.5-flash", image)`
 
-**lmstudio_image(prompt, image_path)**
-This function extends local LM Studio capabilities by supporting vision-based tasks. It encodes a local image file (PNG, JPG, or WebP) into base64 format and sends it alongside a text prompt to the local API endpoint using `httr2`, returning the model's textual description or analysis of the image.
+This function submits a text prompt (and optionally an image) to the Google Gemini API. It requires a `GEMINI_API_KEY` to be set in the `.Renviron` file and uses the `gemini.R` package internally to handle the request. The function tracks and reports the execution time for each call.
 
-**ollama(prompt)**
-This function interacts with locally hosted Ollama models by automatically detecting the most recently installed model via a system call. It provides a dual interface: an interactive Shiny chat interface if no prompt is provided, or a direct console-to-viewer pipeline for single text queries, utilizing the `ellmer` package for model orchestration.
+### `lmstudio(prompt, model, image)`
 
-**openrouter(model, prompt)**
-This function provides a gateway to the OpenRouter API, allowing access to a wide variety of cloud models (defaulting to "openrouter/auto") using the `OPENROUTER_API_KEY`. Similar to the other interfaces, it supports both an interactive Shiny application mode and a direct prompt mode that renders HTML output for immediate preview.
+This function provides an interface to local models running via LM Studio. If no model is specified, it automatically selects the first available model from the LM Studio instance. It supports both direct text/image prompts and an interactive mode using a `shinychat` app if the prompt argument is omitted.
 
+### `ollama(prompt)`
+
+This function interacts with locally hosted models through Ollama. It automatically identifies the most recently listed model on the system and uses the `ellmer` package to initiate a chat session. Similar to other functions in this set, it supports both single-prompt execution and an interactive chat interface.
+
+### `openrouter(model="openrouter/auto", prompt)`
+
+This function serves as a wrapper for the OpenRouter API, allowing access to a wide variety of models through a single interface using the `OPENROUTER_API_KEY` environment variable. It defaults to the 'auto' model selection and supports launching an interactive `shinychat` session when called without a specific prompt.
