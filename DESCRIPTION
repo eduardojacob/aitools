@@ -1,7 +1,7 @@
 Package: aitools
 Type: Package
 Title: aitools package by Eduardo Jacob
-Version: 2026.05.07
+Version: 2026.05.17
 Authors@R: c(
     person("Eduardo", "Jacob", , "eduardo.jorge.jacob@hotmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0009-2103-852X"))
@@ -11,12 +11,8 @@ License: MIT + file LICENSE
 Depends: 
     R (>= 4.1.2)
 Imports:
-    base64enc,
     ellmer,
     gemini.R,
-    httr2,
-    markdown,
-    rstudioapi,
     shinychat
 URL: https://github.com/EduardoJacob/aitools
 Encoding: UTF-8

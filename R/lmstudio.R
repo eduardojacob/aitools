@@ -1,6 +1,8 @@
 #' Submit a prompt to local LM Studio LLM
 #'
 #' @param prompt Text prompt
+#' @param model Optional LM Studio model name
+#' @param image Optional image file
 #'
 #' @export
 #'
@@ -8,30 +10,28 @@
 #' \dontrun{
 #' lmstudio("Qual a capital de Portugal?")
 #' }
-lmstudio = function(prompt) {
+lmstudio = function(prompt,model,image) {
+  if ( missing(model) ) {
+    models = ellmer::models_lmstudio()
+    model = models[1,]
+  }
 
-  CHAT = ellmer::chat_openai(model="",base_url="http://localhost:1234/v1")
+  CHAT = ellmer::chat_lmstudio(model=model)
 
   if ( missing(prompt) ) {
     shinychat::chat_app(CHAT)
   } else {
-    message("Calling LM Studio: ", prompt )
+    message("Calling LM Studio ",model,": ", prompt )
     start_time = Sys.time()
 
-    answer = CHAT$chat(prompt,echo=F)
-
-    html = markdown::mark_html(text = answer)
-
-    temp_file = tempfile(fileext = ".html")
-    writeLines(html, temp_file)
-
-    rstudioapi::viewer(temp_file)
+    if ( missing(image) ) {
+      answer = CHAT$chat(prompt,echo=F)
+    } else {
+      answer = CHAT$chat(prompt,echo=F,ellmer::content_image_file(image) )
+    }
 
     time_diff = difftime(Sys.time(), start_time, units = "secs")
     message("Elapsed ", round(time_diff, 2), " seconds.")
-
-    # save html on current directory
-    # writeLines(html,"lmstudio.html")
 
     return(answer)
   }

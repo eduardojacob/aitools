@@ -4,10 +4,14 @@
 \alias{lmstudio}
 \title{Submit a prompt to local LM Studio LLM}
 \usage{
-lmstudio(prompt)
+lmstudio(prompt, model, image)
 }
 \arguments{
 \item{prompt}{Text prompt}
+
+\item{model}{Optional LM Studio model name}
+
+\item{image}{Optional image file}
 }
 \description{
 Submit a prompt to local LM Studio LLM

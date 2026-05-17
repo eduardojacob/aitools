@@ -4,10 +4,14 @@
 \alias{gemini}
 \title{Submit a prompt to gemini}
 \usage{
-gemini(prompt)
+gemini(prompt, model = "2.5-flash", image)
 }
 \arguments{
 \item{prompt}{Text prompt}
+
+\item{model}{Optional Gemini model name}
+
+\item{image}{Optional image file}
 }
 \description{
 Submit a prompt to gemini
