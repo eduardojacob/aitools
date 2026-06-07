@@ -52,7 +52,7 @@ answer = lmstudio("What is the capital of Spain?")
 image = system.file("httr2.png", package = "ellmer")
 rstudiotools::displaymedia(image)
 answer = lmstudio("Describe this image",image=image)
-rstudiotools::viewmarkdown(answer)
+rstudiotools::displaymedia(answer)
 
 
 # Test gemini https://ai.google.dev/gemini-api/docs/models
@@ -61,12 +61,12 @@ answer = gemini("What is the capital of El Salvador?",model="2.5-flash")
 answer = gemini("What is the capital of Guatemala?",model="3.1-flash-lite")
 
 answer = gemini("What is the capital of Spain ?",model="3-flash-preview")
-rstudiotools::viewmarkdown(answer[1])
+rstudiotools::displaymedia(answer[1])
 
 image = system.file("httr2.png", package = "ellmer")
 rstudiotools::displaymedia(image)
 answer = gemini("Describe this image",model="3-flash-preview",image=image)
-rstudiotools::viewmarkdown(answer[1])
+rstudiotools::displaymedia(answer[1])
 
 
 
