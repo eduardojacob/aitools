@@ -8,7 +8,8 @@
 #'
 #' @examples
 #' \dontrun{
-#' result = split(dataset, dataset$label, 0.8)
+#' library("zeallot")
+#' c(training_set,test_set) %<-% aitools::split(dataset, dataset$label, 0.8)
 #' }
 split = function(df,label,p) {
   split = caTools::sample.split(label,SplitRatio=p)

@@ -18,6 +18,7 @@ Split dataframe into Train and Test dataframes, returning a list with both dataf
 }
 \examples{
 \dontrun{
-result = split(dataset, dataset$label, 0.8)
+library("zeallot")
+c(training_set,test_set) \%<-\% aitools::split(dataset, dataset$label, 0.8)
 }
 }

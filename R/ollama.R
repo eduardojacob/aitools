@@ -23,11 +23,12 @@ ollama = function(prompt) {
   } else {
     start_time = Sys.time()
 
-    answer = CHAT$chat(prompt,echo=F)
+    answer = CHAT$chat(prompt,echo=T)
 
     time_diff = difftime(Sys.time(), start_time, units = "secs")
     message("Elapsed ", round(time_diff, 2), " seconds.")
   }
 
+  return(answer)
 }
 
